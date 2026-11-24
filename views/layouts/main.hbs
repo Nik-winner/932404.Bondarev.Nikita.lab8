@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Доска объявлений</h1>
+            <nav>
+                <a href="/" class="nav-link">Все объявления</a>
+                <a href="/create" class="nav-link btn-primary">+ Подать объявление</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {{{body}}}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Лабораторная работа №8 · ИПМКН ТГУ · 2026</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно редактирования -->
+    <div id="editModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Закрыть">&times;</button>
+            <h2 id="modalTitle">Редактировать объявление</h2>
+            <form id="editForm">
+                <input type="hidden" id="editId">
+                <div class="form-group">
+                    <label for="editTitle">Заголовок</label>
+                    <input type="text" id="editTitle" required minlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="editDescription">Описание</label>
+                    <textarea id="editDescription" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editPrice">Цена, ₽</label>
+                        <input type="number" id="editPrice" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCategory">Категория</label>
+                        <select id="editCategory" required>
+                            <option value="electronics">Электроника</option>
+                            <option value="transport">Транспорт</option>
+                            <option value="books">Книги</option>
+                            <option value="hobby">Хобби</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editStatus">Статус</label>
+                        <select id="editStatus" required>
+                            <option value="active">Активно</option>
+                            <option value="sold">Продано</option>
+                            <option value="archived">Архив</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="editErrors" class="errors"></div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary modal-close-btn">Отмена</button>
+                    <button type="submit" class="btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

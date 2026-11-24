@@ -1,0 +1,24 @@
+<article class="ad-card {{#if (eq status 'sold')}}ad-card--sold{{/if}}" data-id="{{id}}">
+    {{#if (eq status 'sold')}}
+        <span class="badge badge--sold">ПРОДАНО</span>
+    {{else if (eq status 'archived')}}
+        <span class="badge badge--archived">АРХИВ</span>
+    {{/if}}
+
+    <div class="ad-card__header">
+        <h3 class="ad-card__title">{{title}}</h3>
+        <span class="ad-card__price">{{price}} ₽</span>
+    </div>
+
+    <p class="ad-card__description">{{description}}</p>
+
+    <div class="ad-card__meta">
+        <span class="ad-card__category">{{categoryName category}}</span>
+        <time class="ad-card__date">{{formatDate createdAt}}</time>
+    </div>
+
+    <div class="ad-card__actions">
+        <button class="btn-secondary btn-edit" data-id="{{id}}">Редактировать</button>
+        <button class="btn-danger btn-delete" data-id="{{id}}">Удалить</button>
+    </div>
+</article>
